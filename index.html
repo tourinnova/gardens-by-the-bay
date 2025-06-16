@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gardens by the Bay 🌳 - La Maravilla de Singapur</title>
+<meta name="description" content="Bienvenido a Gardens by the Bay, la maravilla futurista de Singapur. ¡Explora la naturaleza y la tecnología en un solo lugar!" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Roboto:wght@400&display=swap" rel="stylesheet">
+<style>
+/* --- Paleta de Colores para el Tema Verde --- */
+:root {
+--primary-green: #004d40; /* Verde oscuro, casi teal */
+--secondary-green: #00796b; /* Verde medio, vibrante */
+--light-green: #e0f7fa; /* Verde muy claro, casi cian */
+--text-color: #333; /* Gris oscuro para texto normal */
+--light-text-color: white; /* Blanco para texto sobre fondos oscuros */
+--accent-color: #81c784; /* Un verde más brillante para acentos */
+}
+/* --- Estilos Generales del Cuerpo --- */
+body {
+margin: 0;
+font-family: 'Roboto', sans-serif; /* Fuente general */
+background: linear-gradient(to bottom right, #004d40, #00796b, #4caf50); /* Dark green, medium green, brighter green */
+background-attachment: fixed; /* Ensures the gradient covers the whole page and doesn't scroll */
+color: var(--light-text-color); /* Color de texto predeterminado para que contraste con la imagen */
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra para que el texto resalte */
+display: flex; /* Para centrar el contenido principal */
+flex-direction: column; /* Organiza los elementos en columna */
+min-height: 100vh; /* Ocupa al menos el 100% de la altura de la ventana */
+}
+/* --- Estilos del Contenedor de Introducción Verde --- */
+.intro-box {
+background-color: var(--primary-green); /* Fondo verde oscuro */
+color: var(--light-text-color); /* Texto blanco */
+padding: 40px 30px;
+text-align: center;
+border-radius: 0 0 15px 15px; /* Bordes redondeados solo en la parte inferior */
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6); /* Sombra para darle profundidad */
+max-width: 900px;
+margin: 0 auto; /* Centra el cuadro horizontalmente */
+margin-bottom: 20px; /* Espacio debajo del cuadro */
+position: relative; /* Necesario para que la imagen de fondo se posicione bien */
+overflow: hidden; /* Asegura que el contenido no se salga de los bordes redondeados */
+}
+.intro-box h1 {
+font-family: 'Playfair Display', serif;
+font-size: clamp(2.5em, 6vw, 4em);
+margin-bottom: 15px;
+text-transform: uppercase;
+color: var(--light-green); /* Verde claro para el título principal */
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+/* Style for the hyperlink within the h1 */
+.intro-box h1 a {
+color: inherit; /* Inherit color from h1 (var(--light-green)) */
+text-decoration: none; /* No underline by default */
+transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+.intro-box h1 a:hover {
+color: var(--light-text-color); /* Change to white on hover */
+text-decoration: underline; /* Add underline on hover */
+}
+.intro-box p {
+font-size: clamp(1em, 2.5vw, 1.3em);
+max-width: 700px;
+margin: 15px auto; /* Increased top margin for spacing from image */
+line-height: 1.6;
+}
+/* Style for the image inside the intro-box */
+.intro-box img {
+max-width: 100%; /* Ensure image fits within the box */
+height: auto; /* Maintain aspect ratio */
+border-radius: 8px; /* Slightly rounded corners for the image */
+margin-top: 20px; /* Space above the image */
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Soft shadow for the image */
+}
+/* --- Estilos del Menú de Navegación --- */
+.menu {
+background-color: rgba(0, 77, 64, 0.9); /* Un verde oscuro semitransparente */
+display: flex; /* Elementos del menú en línea */
+align-items: center; /* Centra verticalmente los elementos */
+justify-content: center; /* Centra horizontalmente los elementos */
+padding: 10px 0;
+box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Sombra para el menú */
+position: sticky; /* Hace que el menú se quede en su posición */
+top: 0; /* Se pega a la parte superior de la ventana */
+z-index: 1000; /* Asegura que esté por encima de otros elementos al hacer scroll */
+}
+.menu > a,
+.dropbtn {
+color: var(--light-text-color); /* Texto blanco */
+padding: 14px 20px;
+text-decoration: none; /* Sin subrayado */
+background: none;
+border: none;
+font-size: 18px;
+font-weight: bold;
+cursor: pointer;
+transition: background-color 0.3s ease; /* Transición suave al pasar el ratón */
+display: flex; /* Para alinear el texto y el emoji */
+align-items: center; /* Centra verticalmente el emoji con el texto */
+}
+.menu > a:hover,
+.dropbtn:hover {
+background-color: var(--secondary-green); /* Verde medio al pasar el ratón */
+}
+/* Estilo para los emojis dentro del menú */
+.menu-icon {
+margin-right: 8px; /* Espacio entre el emoji y el texto */
+font-size: 1.2em; /* Hace el emoji un poco más grande */
+}
+/* --- Estilos del Dropdown (si aplica) --- */
+.dropdown {
+position: relative;
+display: inline-block; /* Asegura que el dropdown funcione */
+}
+.dropdown-content {
+display: none; /* Oculto por defecto */
+position: absolute;
+top: 100%;
+left: 0;
+background-color: rgba(0, 77, 64, 0.95); /* Fondo oscuro para el contenido del dropdown */
+min-width: 180px;
+box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+z-index: 1; /* Asegura que esté por encima de otros elementos */
+border-radius: 0 0 8px 8px; /* Bordes redondeados abajo */
+overflow: hidden; /* Para que el borde redondeado se vea bien */
+}
+.dropdown-content a {
+color: var(--light-text-color);
+padding: 12px 16px;
+text-decoration: none;
+display: flex; /* Para alinear el texto y el emoji en el dropdown */
+align-items: center; /* Centra verticalmente el emoji con el texto */
+font-size: 16px;
+transition: background-color 0.3s ease;
+}
+.dropdown-content a:hover {
+background-color: var(--secondary-green); /* Verde medio al pasar el ratón */
+}
+.dropdown:hover .dropdown-content {
+display: block; /* Muestra el dropdown al pasar el ratón por el botón */
+}
+/* --- Estilos de la Galería --- */
+.gallery-section {
+padding: 60px 30px;
+text-align: center;
+background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente para la sección */
+margin: 40px auto; /* Centra el div y le da margen */
+border-radius: 15px; /* Bordes redondeados */
+max-width: 1000px; /* Ancho máximo para la galería */
+box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7); /* Sombra para la sección */
+position: relative; /* Para el ID de anclaje */
+}
+.gallery-section h2 {
+font-family: 'Playfair Display', serif;
+font-size: clamp(2em, 6vw, 3.5em);
+margin-bottom: 30px;
+color: var(--light-green);
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+.gallery-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+/* Responsive grid columns */
+gap: 20px; /* Space between images */
+justify-content: center; /* Center items in the grid */
+}
+.gallery-item {
+background-color: var(--primary-green); /* Fondo para cada imagen en la galería */
+border-radius: 10px;
+overflow: hidden; /* Hide anything outside the rounded corners */
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+}
+.gallery-item:hover {
+transform: translateY(-5px); /* Lift effect on hover */
+box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+}
+.gallery-item img {
+width: 100%;
+height: 200px; /* Fixed height for gallery images */
+object-fit: cover; /* Ensures images cover the area without distortion */
+display: block; /* Removes extra space below image */
+}
+.gallery-item p {
+font-size: 0.95em;
+padding: 10px 15px;
+color: var(--light-text-color);
+margin: 0; /* Remove default paragraph margins */
+text-shadow: none; /* No text shadow on descriptions */
+line-height: 1.4;
+}
+
+/* --- Nuevos Estilos para Contenido Adicional --- */
+.content-section {
+padding: 60px 30px;
+text-align: center;
+background-color: rgba(0, 0, 0, 0.5);
+margin: 40px auto;
+border-radius: 15px;
+max-width: 1000px;
+box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+position: relative;
+}
+
+.content-section h2 {
+font-family: 'Playfair Display', serif;
+font-size: clamp(2em, 6vw, 3.5em);
+margin-bottom: 30px;
+color: var(--light-green);
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.content-section p {
+font-size: clamp(1em, 2.5vw, 1.3em);
+max-width: 700px;
+margin: 15px auto;
+line-height: 1.6;
+text-align: justify;
+color: var(--light-text-color); /* Default paragraph color */
+}
+
+/* New class for colorful typography */
+.colorful-text {
+    color: var(--accent-color); /* Use a more vibrant green for emphasis */
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+.colorful-text.italic {
+    font-style: italic;
+}
+
+.content-section ul,
+.content-section ol {
+text-align: left;
+margin: 20px auto;
+padding-left: 20px;
+max-width: 700px;
+color: var(--light-text-color); /* Default list item color */
+text-shadow: none;
+}
+
+.content-section li {
+margin-bottom: 10px;
+line-height: 1.5;
+}
+
+.content-section ol li::marker {
+font-weight: bold;
+color: var(--light-green);
+}
+
+.content-section ul li::marker {
+color: var(--light-green);
+font-size: 1.2em;
+}
+
+.video-container {
+position: relative;
+padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+height: 0;
+overflow: hidden;
+max-width: 100%;
+background: var(--primary-green);
+margin: 30px auto;
+border-radius: 10px;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.video-container iframe {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+border: none;
+}
+
+.table-container {
+margin: 30px auto;
+max-width: 800px;
+overflow-x: auto; /* For responsive tables */
+}
+
+.styled-table {
+width: 100%;
+border-collapse: collapse;
+margin-top: 20px;
+background-color: var(--primary-green);
+border-radius: 10px;
+overflow: hidden;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.styled-table th, .styled-table td {
+padding: 12px 15px;
+border: 1px solid var(--secondary-green);
+color: var(--light-text-color); /* Table text color */
+text-shadow: none;
+text-align: left;
+}
+
+.styled-table th {
+background-color: var(--secondary-green);
+font-weight: bold;
+text-transform: uppercase;
+}
+
+.styled-table tr:nth-child(even) {
+background-color: rgba(0, 0, 0, 0.2); /* Slightly darker for even rows */
+}
+
+.map-container {
+margin: 30px auto;
+max-width: 800px;
+border-radius: 10px;
+overflow: hidden;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.map-container iframe {
+width: 100%;
+height: 450px;
+border: none;
+}
+
+.button-group {
+margin-top: 30px;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 20px;
+}
+
+.styled-button {
+background-color: var(--secondary-green);
+color: var(--light-text-color);
+padding: 15px 30px;
+border: none;
+border-radius: 8px;
+font-size: 1.1em;
+font-weight: bold;
+cursor: pointer;
+transition: background-color 0.3s ease, transform 0.2s ease;
+text-decoration: none;
+display: inline-flex;
+align-items: center;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.styled-button:hover {
+background-color: var(--primary-green);
+transform: translateY(-3px);
+}
+
+.styled-button .menu-icon {
+margin-right: 10px;
+font-size: 1.3em;
+}
+
+/* --- Estilos de Créditos --- */
+.creditos {
+text-align: center;
+font-size: 14px;
+padding: 20px;
+margin-top: auto; /* Empuja los créditos al final de la página */
+background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro semitransparente */
+color: #ccc; /* Gris claro para los créditos */
+text-shadow: none;
+box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5); /* Sombra superior */
+}
+/* --- Responsive Design (Ajustes para pantallas pequeñas) --- */
+@media (max-width: 768px) {
+.intro-box {
+padding: 30px 15px;
+border-radius: 0; /* Sin redondeo en la parte superior en móviles si se pega al borde */
+}
+.intro-box h1 {
+font-size: clamp(2em, 8vw, 3.5em);
+}
+.intro-box p {
+font-size: clamp(0.9em, 2.8vw, 1.2em);
+}
+.intro-box img {
+margin-top: 15px; /* Less margin on mobile */
+}
+.menu {
+flex-direction: column; /* Apila los elementos del menú en pantallas pequeñas */
+padding: 10px 0;
+}
+.menu > a,
+.dropbtn {
+width: 100%; /* Botones de menú ocupan todo el ancho */
+text-align: center;
+padding: 10px 0;
+}
+.dropdown-content {
+position: static; /* Dropdown se muestra debajo del botón, no flotante */
+min-width: 100%;
+border-radius: 0;
+}
+/* Gallery adjustments for small screens */
+.gallery-section {
+padding: 30px 15px;
+margin: 20px auto;
+}
+.gallery-grid {
+grid-template-columns: 1fr; /* Single column on very small screens */
+}
+.content-section {
+margin: 20px 15px;
+padding: 40px 15px;
+}
+.content-section h2 {
+font-size: clamp(2.5em, 10vw, 4em);
+}
+.content-section p {
+font-size: clamp(0.9em, 3vw, 1.1em);
+}
+.video-container,
+.table-container,
+.map-container {
+margin: 20px auto;
+}
+.styled-table th, .styled-table td {
+padding: 10px;
+font-size: 0.9em;
+}
+.map-container iframe {
+height: 300px;
+}
+.button-group {
+flex-direction: column;
+}
+.styled-button {
+width: 90%;
+margin: 5px auto;
+}
+}
+</style>
+</head>
+
+<body>
+<div class="intro-box">
+<h1><a href="https://es.wikipedia.org/wiki/Gardens_by_the_Bay"
+target="_blank" rel="noopener noreferrer">Gardens by the Bay 🌿</a></h1>
+<img src="gagarden.png" alt="Supertree Grove at Gardens by the Bay" loading="lazy">
+<p>Bienvenido al <span class="colorful-text">corazón verde de Singapur</span>. Descubre un mundo
+futurista donde la <span class="colorful-text">naturaleza y la tecnología</span> se encuentran para crear
+una experiencia <span class="colorful-text italic">inolvidable</span>. ¡Explora las maravillas de Gardens by the
+Bay! ✨</p>
+</div>
+<div class="menu">
+<a href="#inicio"><span class="menu-icon">🏠</span> Inicio</a>
+<div class="dropdown">
+<button class="dropbtn"><span class="menu-icon">🌳</span>
+Secciones ▾</button>
+<div class="dropdown-content">
+<a href="#atracciones"><span class="menu-icon">🌸</span>
+Atracciones Principales</a>
+<a href="#galeria"><span class="menu-icon">📸</span>
+Galería de Fotos</a>
+<a href="#video"><span class="menu-icon">▶️</span>
+Video Exploratorio</a>
+<a href="#horarios"><span class="menu-icon">⏰</span>
+Horarios y Precios</a>
+<a href="#ubicacion"><span class="menu-icon">📍</span>
+Ubicación</a>
+<a href="#info-util"><span class="menu-icon">ℹ️</span>
+Información Útil</a>
+<a href="#contacto-info"><span class="menu-icon">📞</span>
+Contáctanos</a>
+</div>
+</div>
+<a href="#contacto-info"><span class="menu-icon">✉️</span>
+Contacto</a>
+</div>
+
+<div class="content-section" id="atracciones">
+    <h2><span class="menu-icon">✨</span>Descubre las <span class="colorful-text">Atracciones Principales</span> 🌷</h2>
+    <p>Gardens by the Bay es un complejo de parques que ofrece una variedad de experiencias únicas. <span class="colorful-text italic">¡No te pierdas lo siguiente!</span> 👇</p>
+    <ol>
+        <li><span class="colorful-text">Supertree Grove:</span> Estas estructuras icónicas, que van de 25 a 50 metros de altura, albergan una gran variedad de plantas y por la noche se iluminan con un impresionante espectáculo de luces y sonido. 💡</li>
+        <li><span class="colorful-text">Flower Dome:</span> El invernadero de cristal más grande del mundo, que reproduce el clima mediterráneo y subtropical. Admira una increíble colección de flores y plantas de todo el planeta. 🌺</li>
+        <li><span class="colorful-text">Cloud Forest:</span> Un impresionante paisaje montañoso con una cascada interior de 35 metros de altura y una niebla perpetua que crea un ambiente mágico y fresco. 💧</li>
+        <li><span class="colorful-text">OCBC Skyway:</span> Un puente elevado que conecta varios Supertrees, ofreciendo vistas panorámicas del parque y el horizonte de Singapur. ¡Ideal para fotografías! 📸</li>
+        <li><span class="colorful-text">Children's Garden:</span> Un área de juegos interactiva y acuática perfecta para los más pequeños, con toboganes y senderos educativos. 🧒👧</li>
+    </ol>
+</div>
+
+<div class="gallery-section" id="galeria">
+<h2><span class="menu-icon">📸</span>Nuestra <span class="colorful-text">Galería de Fotos</span> 🖼️</h2>
+<div class="gallery-grid">
+<div class="gallery-item">
+<a href="https://es.wikipedia.org/wiki/Cloud_Forest_(Gardens_by_the_Bay)" target="_blank">
+<img src="cloud.png" alt="Cloud Forest Dome">
+<p>La cúpula del Bosque Nuboso. <span class="colorful-text italic">¡Clic para saber más!</span> ☁️</p>
+</a>
+</div>
+<div class="gallery-item">
+<a href="https://www.gardensbythebay.com.sg/en/things-to-do/attractions/dragonfly-and-kingfisher-lakes.html" target="_blank" rel="noopener noreferrer">
+<img src="dragon.png" alt="Dragonfly Lake">
+<p>El sereno Lago de las Libélulas. <span class="colorful-text italic">¡Un paseo relajante!</span> 🛶</p>
+</a>
+</div>
+<div class="gallery-item">
+<a href="https://www.gardensbythebay.com.sg/en/things-to-do/attractions/supertree-grove.html" target="_blank" rel="noopener noreferrer">
+<img src="bosquenuboso.png" alt="Supertree Grove at night">
+<p>El Supertree Grove iluminado por la noche. <span class="colorful-text italic">¡Un espectáculo de luces!</span> ✨🌳</p>
+</a>
+</div>
+<div class="gallery-item">
+<a href="https://es.wikipedia.org/wiki/Flower_Dome" target="_blank">
+<img src="flower.png" alt="Flower Dome interior">
+<p>Explorando el interior del Flower Dome. <span class="colorful-text italic">¡Un mundo floral!</span> 🌸🌼</p>
+</a>
+</div>
+<div class="gallery-item">
+    <a href="https://media3.giphy.com/media/1yGBTMC7dR4CoFtFtB/giphy.gif"target="_blank">
+        <img src="pa.gif" alt="Un GIF de Gardens by the Bay">
+        <p>Un pequeño vistazo en movimiento. <span class="colorful-text italic">¡Haz clic en el GIF!</span> 🎬</p>
+    </a>
+</div>
+<div class="gallery-item">
+<a href="https://www.gardensbythebay.com.sg/en/things-to-do/attractions/ocbc-skyway.html" target="_blank" rel="noopener noreferrer">
+<img src="obcc.png" alt="OCBC Skyway">
+<p>Paseo por el OCBC Skyway. <span class="colorful-text italic">¡Vistas impresionantes!</span> 🏙️</p>
+</a>
+</div>
+</div>
+</div>
+
+<div class="content-section" id="video">
+    <h2><span class="menu-icon">▶️</span><span class="colorful-text">Explora Gardens by the Bay</span> en Video 🎬</h2>
+    <p>Sumérgete en la <span class="colorful-text">belleza y la majestuosidad</span> de Gardens by the Bay desde la comodidad de tu hogar con este video. 👇</p>
+    <div class="video-container">
+                <iframe src="VIDEO.mp4.mp4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+</div>
+
+<div class="content-section" id="horarios">
+    <h2><span class="menu-icon">⏰</span><span class="colorful-text">Horarios y Precios</span> 💲</h2>
+    <p>Planifica tu visita con nuestra guía de horarios y precios para las atracciones principales. ¡Te esperamos! 👇</p>
+    <div class="table-container">
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th style="color: var(--light-green);">Atracción</th>
+                    <th style="color: var(--light-green);">Horario Diario</th>
+                    <th style="color: var(--light-green);">Precio de Entrada (Adulto)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Flower Dome 🌺</td>
+                    <td>9:00 AM - 9:00 PM</td>
+                    <td>SGD 20</td>
+                </tr>
+                <tr>
+                    <td>Cloud Forest ☁️</td>
+                    <td>9:00 AM - 9:00 PM</td>
+                    <td>SGD 20</td>
+                </tr>
+                <tr>
+                    <td>OCBC Skyway 🌉</td>
+                    <td>9:00 AM - 9:00 PM</td>
+                    <td>SGD 10</td>
+                </tr>
+                <tr>
+                    <td>Supertree Grove (Acceso Base) 🌳</td>
+                    <td>5:00 AM - 2:00 AM</td>
+                    <td>Gratis</td>
+                </tr>
+                <tr>
+                    <td>Children's Garden 🧑‍🧒</td>
+                    <td>9:00 AM - 7:00 PM (Cerrado los Martes)</td>
+                    <td>Gratis</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p class="colorful-text italic" style="font-size: 0.9em; text-align: center;">*Los precios pueden variar. Se recomienda consultar el sitio web oficial para la información más actualizada. 💡</p>
+</div>
+
+<div class="content-section" id="ubicacion">
+    <h2><span class="menu-icon">📍</span><span class="colorful-text">Encuéntranos en el Mapa</span> 🗺️</h2>
+    <p>Ubica Gardens by the Bay en el mapa y planifica tu ruta para llegar a este <span class="colorful-text">destino increíble</span>. ¡Te esperamos! 👇</p>
+    <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.790906236942!2d103.86241351475765!3d1.2815668990666013!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da19028e578f77%3A0x242d5069720d2d!2sGardens%20by%20the%20Bay!5e0!3m2!1ses!2ssg!4v1678901234567!5m2!1ses!2ssg" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+</div>
+
+<div class="content-section" id="info-util">
+    <h2><span class="menu-icon">ℹ️</span><span class="colorful-text">Información Útil</span> para tu Visita 📝</h2>
+    <p>Aquí tienes algunos <span class="colorful-text">consejos y datos importantes</span> para que tu experiencia en Gardens by the Bay sea perfecta: ✨</p>
+    <ul>
+        <li>Llega temprano para evitar las multitudes, especialmente durante los fines de semana y días festivos. ⏰</li>
+        <li>Usa calzado cómodo, ya que caminarás bastante explorando los jardines. 👟</li>
+        <li>No olvides tu cámara para capturar los momentos más impresionantes. 📸</li>
+        <li>Consulta el pronóstico del tiempo; Singapur puede ser caluroso y húmedo. ☀️💧</li>
+        <li>Hay opciones de comida y bebida disponibles dentro del parque. 🍔🥤</li>
+        <li>El espectáculo de luces y sonido del Supertree Grove (<span class="colorful-text">Garden Rhapsody</span>) es imperdible y gratuito. 🎶💡</li>
+        <li>Considera comprar boletos en línea para evitar filas en las atracciones de pago. 🎟️</li>
+    </ul>
+</div>
+
+<div class="content-section" id="contacto-info">
+    <h2><span class="menu-icon">📞</span><span class="colorful-text">Contáctanos</span> y Planifica tu Visita 📧</h2>
+    <p>¿Tienes preguntas o necesitas más información? <span class="colorful-text italic">¡Estamos aquí para ayudarte!</span> 👇</p>
+    <div class="button-group">
+        <a href="https://www.gardensbythebay.com.sg/en/plan-your-visit.html" target="_blank" class="styled-button">
+            <span class="menu-icon">✅</span> Planifica tu Visita
+        </a>
+        <a href="mailto:info@gardensbythebay.com.sg" class="styled-button">
+            <span class="menu-icon">📧</span> Envíanos un Correo
+        </a>
+        <button class="styled-button" onclick="alert('¡Llámanos al +65 6420 6848 para más información!')">
+            <span class="menu-icon">☎️</span> Llamar Ahora
+        </button>
+    </div>
+</div>
+
+<div class="creditos">
+Diseñado con cariño para Gardens by the Bay. 💚<br>
+Última actualización: 16 de Junio de 2025. 🗓️
+</div>
+</body>
+</html>
